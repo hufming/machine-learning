@@ -55,6 +55,8 @@ X = [ones(m, 1) X];
 initial_theta = zeros(n + 1, 1);
 options = optimset('GradObj', 'on', 'MaxIter', 50);
 all_theta = zeros(num_labels,n+1);
+% y is a vector of 5000 dimensions,(y == c) generates a new vector, if sample equals c,value is 1, others is 0
+% then the recognition problem is transformed to a Multi-classification problem
 for c = 1:num_labels
 theta = fmincg (@(t)(lrCostFunction(t, X, (y == c), lambda)), initial_theta, options);
 all_theta(c,:) = theta';
